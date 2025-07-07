@@ -1,74 +1,41 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState("home");
-
-  const scrollToSection = (sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
         <div className="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 shadow-lg">
           <div className="flex items-center gap-6">
-            <div
-              className={`flex items-center gap-2 cursor-pointer transition-all duration-300 px-3 py-2 rounded-full ${
-                activeSection === "photos"
-                  ? "bg-white/30 text-yellow-300"
-                  : "hover:text-yellow-300"
-              }`}
-              onClick={() => scrollToSection("photos")}
+            <Link
+              to="/photos"
+              className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors px-3 py-2 rounded-full"
             >
               <Icon name="Camera" size={20} />
               <span className="text-white font-medium">Фотографии</span>
-            </div>
-            <div
-              className={`flex items-center gap-2 cursor-pointer transition-all duration-300 px-3 py-2 rounded-full ${
-                activeSection === "music"
-                  ? "bg-white/30 text-yellow-300"
-                  : "hover:text-yellow-300"
-              }`}
-              onClick={() => scrollToSection("music")}
+            </Link>
+            <Link
+              to="/music"
+              className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors px-3 py-2 rounded-full"
             >
               <Icon name="Music" size={20} />
               <span className="text-white font-medium">Музыка</span>
-            </div>
-            <div
-              className={`flex items-center gap-2 cursor-pointer transition-all duration-300 px-3 py-2 rounded-full ${
-                activeSection === "video"
-                  ? "bg-white/30 text-yellow-300"
-                  : "hover:text-yellow-300"
-              }`}
-              onClick={() => scrollToSection("video")}
+            </Link>
+            <Link
+              to="/video"
+              className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors px-3 py-2 rounded-full"
             >
               <Icon name="Video" size={20} />
               <span className="text-white font-medium">Видео</span>
-            </div>
-            <div
-              className={`flex items-center gap-2 cursor-pointer transition-all duration-300 px-3 py-2 rounded-full ${
-                activeSection === "posts"
-                  ? "bg-white/30 text-yellow-300"
-                  : "hover:text-yellow-300"
-              }`}
-              onClick={() => scrollToSection("posts")}
+            </Link>
+            <Link
+              to="/posts"
+              className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors px-3 py-2 rounded-full"
             >
               <Icon name="FileText" size={20} />
               <span className="text-white font-medium">Посты</span>
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
@@ -124,162 +91,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Photos Section */}
-      <section id="photos" className="py-20 bg-gray-50">
+      {/* Features Preview */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gradient">
-            📸 Фотографии
+            Мои направления
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <Card
-                key={item}
-                className="hover-lift bg-white shadow-lg animate-fade-in group overflow-hidden"
-              >
-                <CardContent className="p-0">
-                  <div className="aspect-square bg-gradient-to-br from-pink-400 to-orange-600 relative overflow-hidden rounded-t-lg">
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-all">
-                      <Icon
-                        name="Camera"
-                        size={48}
-                        className="text-white/80 group-hover:scale-110 transition-transform"
-                      />
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-lg mb-2">Фото {item}</h3>
-                    <p className="text-gray-600 text-sm">
-                      Профессиональная фотосъемка с уникальным стилем
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Music Section */}
-      <section id="music" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gradient">
-            🎵 Музыка
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((track) => (
-              <Card
-                key={track}
-                className="hover-lift shadow-lg animate-fade-in"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
-                      <Icon name="Music" size={24} className="text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-1">
-                        Трек {track}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-2">
-                        Оригинальная композиция
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <Icon name="Clock" size={16} />
-                        <span>3:45</span>
-                      </div>
-                    </div>
-                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-blue-600 transition-colors">
-                      <Icon name="Play" size={20} className="text-white" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section */}
-      <section id="video" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gradient">
-            🎬 Видео
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((video) => (
-              <Card
-                key={video}
-                className="hover-lift shadow-lg animate-fade-in"
-              >
-                <CardContent className="p-0">
-                  <div className="aspect-video bg-gradient-to-br from-red-500 to-yellow-600 relative overflow-hidden rounded-t-lg">
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <Icon
-                          name="Play"
-                          size={24}
-                          className="text-white ml-1"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-lg mb-2">
-                      Видео {video}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      Творческий видеоконтент с профессиональным монтажом
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Blog/Posts Section */}
-      <section id="posts" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gradient">
-            ✍️ Посты
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((post) => (
-              <Card key={post} className="hover-lift shadow-lg animate-fade-in">
-                <CardHeader>
-                  <div className="aspect-video bg-gradient-to-r from-green-500 to-blue-600 rounded-lg mb-4 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                      <Icon
-                        name="FileText"
-                        size={32}
-                        className="text-white/80"
-                      />
-                    </div>
-                  </div>
-                  <CardTitle className="text-xl">
-                    Заголовок поста {post}
-                  </CardTitle>
-                  <CardDescription>
-                    Краткое описание содержания поста и основных идей, которые в
-                    нем раскрываются. Здесь может быть любой текст любого
-                    размера.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center gap-2">
-                      <Icon name="Clock" size={16} />
-                      <span>5 минут чтения</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Icon name="Calendar" size={16} />
-                      <span>2 дня назад</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Link to="/photos" className="group">
+              <div className="bg-gradient-to-br from-pink-400 to-orange-600 rounded-2xl p-8 text-center hover-lift group-hover:scale-105 transition-all">
+                <Icon
+                  name="Camera"
+                  size={48}
+                  className="text-white mx-auto mb-4"
+                />
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Фотографии
+                </h3>
+                <p className="text-white/80">Профессиональная фотосъемка</p>
+              </div>
+            </Link>
+            <Link to="/music" className="group">
+              <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-8 text-center hover-lift group-hover:scale-105 transition-all">
+                <Icon
+                  name="Music"
+                  size={48}
+                  className="text-white mx-auto mb-4"
+                />
+                <h3 className="text-2xl font-bold text-white mb-2">Музыка</h3>
+                <p className="text-white/80">Оригинальные композиции</p>
+              </div>
+            </Link>
+            <Link to="/video" className="group">
+              <div className="bg-gradient-to-br from-red-500 to-yellow-600 rounded-2xl p-8 text-center hover-lift group-hover:scale-105 transition-all">
+                <Icon
+                  name="Video"
+                  size={48}
+                  className="text-white mx-auto mb-4"
+                />
+                <h3 className="text-2xl font-bold text-white mb-2">Видео</h3>
+                <p className="text-white/80">Креативные видеопроекты</p>
+              </div>
+            </Link>
+            <Link to="/posts" className="group">
+              <div className="bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl p-8 text-center hover-lift group-hover:scale-105 transition-all">
+                <Icon
+                  name="FileText"
+                  size={48}
+                  className="text-white mx-auto mb-4"
+                />
+                <h3 className="text-2xl font-bold text-white mb-2">Посты</h3>
+                <p className="text-white/80">Мысли и наблюдения</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
