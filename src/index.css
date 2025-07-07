@@ -112,17 +112,35 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(-45deg, #2563eb, #1e293b, #2563eb, #475569);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: linear-gradient(
+      -45deg,
+      #ff0000,
+      #ff7f00,
+      #ffff00,
+      #00ff00,
+      #0000ff,
+      #4b0082,
+      #9400d3,
+      #ff1493,
+      #00ffff,
+      #ff4500
+    );
+    background-size: 1000% 1000%;
+    animation: gradientShift 20s ease infinite;
   }
 
   @keyframes gradientShift {
     0% {
       background-position: 0% 50%;
     }
-    50% {
+    25% {
       background-position: 100% 50%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
     }
     100% {
       background-position: 0% 50%;

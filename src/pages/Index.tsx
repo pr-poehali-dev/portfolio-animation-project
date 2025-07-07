@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,31 +10,41 @@ import Icon from "@/components/ui/icon";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* Navigation Bar */}
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 shadow-lg">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors">
+              <Icon name="Camera" size={20} />
+              <span className="text-white font-medium">Фотографии</span>
+            </div>
+            <div className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors">
+              <Icon name="Music" size={20} />
+              <span className="text-white font-medium">Музыка</span>
+            </div>
+            <div className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors">
+              <Icon name="Video" size={20} />
+              <span className="text-white font-medium">Видео</span>
+            </div>
+            <div className="flex items-center gap-2 cursor-pointer hover:text-yellow-300 transition-colors">
+              <Icon name="FileText" size={20} />
+              <span className="text-white font-medium">Посты</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section with Animated Gradient */}
       <section className="gradient-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 text-center relative z-10 fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Моё <span className="text-gradient">Портфолио</span>
+            Моё <span className="text-white drop-shadow-lg">Портфолио</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto opacity-90">
             Добро пожаловать в мир творчества, где каждый кадр рассказывает
             историю
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button size="lg" className="bg-white text-black hover:bg-gray-100">
-              <Icon name="Camera" className="mr-2" />
-              Мои работы
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black"
-            >
-              <Icon name="Mail" className="mr-2" />
-              Связаться
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -159,18 +168,14 @@ const Index = () => {
             проектов
           </p>
           <div className="flex gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-              <Icon name="Send" className="mr-2" />
-              Написать мне
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black"
-            >
-              <Icon name="Download" className="mr-2" />
-              Скачать CV
-            </Button>
+            <div className="flex items-center gap-2 text-lg">
+              <Icon name="Send" className="text-blue-400" />
+              <span>email@example.com</span>
+            </div>
+            <div className="flex items-center gap-2 text-lg">
+              <Icon name="Phone" className="text-green-400" />
+              <span>+7 (999) 123-45-67</span>
+            </div>
           </div>
         </div>
       </section>
